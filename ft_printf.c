@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   ft_printf.c                                       :+:      :+:    :+:    */
-/*                                                   +:+ +:+         +:+      */
-/*   By: username <username@student.42tokyo.jp>    #+#  +:+       +#+         */
-/*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/10/02 12:34:12 by username         #+#    #+#              */
-/*   Updated: 2026/10/10 21:10:44 by username        ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marsaleh <marahsaleh@student.42amman.co    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/02 12:34:12 by marsaleh          #+#    #+#             */
+/*   Updated: 2026/10/11 09:11:25 by marsaleh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 static int	check_formatin(va_list args, char *str, int count)
 {
 	if (*str == 'c')
-		return (0);
+		return (ft_putchar(va_arg(args, char)));
 	else if (*str == 'p')
-		retun(0);
+		return (ft_putptr(va_arg(args, void *)));
 	else if (*str == 'd' || *str == 'i')
 		return (ft_putnbr_base(va_arg(args, int), "0123456789"));
 	else if (*str == 'u')
-		return (0);
+		return (ft_putuns(va_arg(args, unsigned int)));
 	else if (*str == 'x')
 		return (ft_putnbr_base(va_arg(args, int), "0123456789abcdef"));
 	else if (*str == 'X')
 		return (ft_putnbr_base(va_arg(args, int), "0123456789ABCDEF"));
 	else if (*str == '%')
-		return (0);
+		return (putchar("%"));
 	else if (*str == 's')
 		return (ft_putstr(va_arg(args, char *)));
 	return (0);

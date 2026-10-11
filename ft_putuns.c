@@ -3,16 +3,16 @@
 /*                                                       :::      ::::::::    */
 /*   ft_putuns.c                                       :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
-/*   By: username <username@student.42tokyo.jp>    #+#  +:+       +#+         */
+/*   By: marsaleh <marahsaleh@student.42amman.com> #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/10/10 08:50:43 by username         #+#    #+#              */
-/*   Updated: 2026/10/10 21:00:35 by username        ###   ########.fr        */
+/*   Created: 2026/10/10 08:50:43 by marsaleh         #+#    #+#              */
+/*   Updated: 2026/10/11 08:50:49 by marsaleh        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	numlen(int nbr)
+int	numlen(unsigned int nbr)
 {
 	int	len;
 
