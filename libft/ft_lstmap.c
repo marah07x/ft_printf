@@ -6,35 +6,34 @@
 /*   By: marsaleh <marahsaleh@student.42amman.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/30 08:50:22 by marsaleh          #+#    #+#             */
-/*   Updated: 2026/10/08 11:24:43 by marsaleh         ###   ########.fr       */
+/*   Updated: 2026/10/11 13:35:17 by marsaleh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*void	*f(void *content)
+void	*f(void *content)
 {
-char	*str;
-int		i;
+	char	*str;
+	int		i;
 
-i = 0;
-str = (char *) content;
-while (str[i])
+	i = 0;
+	str = (char *) content;
+	while (str[i])
+	{
+		if (str[i] >= 'a' && str[i] <= 'z')
+		{
+			str[i] -= 32;
+		}
+		i++;
+	}
+	return (content);
+}
+
+void	del(void *content)
 {
-if (str[i] >= 'a' && str[i] <= 'z')
-{
-str[i] -= 32;
+	free(content);
 }
-i++;
-}
-return (content);
-}
-*/
-/*void	del(void *content)
-{
-free(content);
-}
-*/
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
@@ -65,23 +64,21 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 int	main(void)
 {
-char	*str1;
-char	*str2;
 t_list	*meow;
 t_list	*head = NULL;
-t_list	*node1 = ft_lstnew(strdup("marah"));
-t_list	*node2 = ft_lstnew(strdup("joy"));
+t_list	*m = NULL;
 
-ft_lstadd_back(&head, node1);
-ft_lstadd_back(&head, node2);
-ft_lstmap(head, toupper, del);
-meow = head;
+ft_lstadd_back(&head, ft_lstnew(strdup("marah")));
+ft_lstadd_back(&head, ft_lstnew(strdup("joy")));
+m = ft_lstmap(head, f, del);
+meow = m;
 while (meow)
 {
 printf("%p ", (void *) meow->next);
 meow = meow->next;
 }
-ft_lstclear(&head,del)
+ft_lstclear(&head, del);
+ft_lstclear(&m, del);
 return (0);
 }
 */

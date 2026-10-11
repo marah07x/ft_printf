@@ -6,16 +6,13 @@
 /*   By: marsaleh <marahsaleh@student.42amman.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/09 12:59:58 by marsaleh          #+#    #+#             */
-/*   Updated: 2026/10/10 08:52:26 by marsaleh         ###   ########.fr       */
+/*   Updated: 2026/10/11 10:49:50 by marsaleh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <stdio.h>
+
 int	main(void)
 {
-	unsigned int	i;
-
-	i = -1;
-	printf("%u", i);
-}	
-
-
+	printf("%p", NULL);
+}

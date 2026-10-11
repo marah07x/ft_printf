@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   ft_putnbrbase.c                                   :+:      :+:    :+:    */
-/*                                                   +:+ +:+         +:+      */
-/*   By: username <username@student.42tokyo.jp>    #+#  +:+       +#+         */
-/*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/10/10 12:05:32 by username         #+#    #+#              */
-/*   Updated: 2026/10/10 19:44:27 by username        ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbrbase.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marsaleh <marahsaleh@student.42amman.co    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/10 12:05:32 by marsaleh          #+#    #+#             */
+/*   Updated: 2026/10/11 10:52:09 by marsaleh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	check_base(int len, char *base)
-{
-	int	index;
-
-	index = 0;
-	if (len <= 1)
-		return ;
-	while (base[index] != '\0')
-	{
-		if (base[index] == 43 || base[index] == 45)
-			return ;
-		index++;
-	}
-}
-
-int	numlen(int nbr)
+int	numlen(unsigned long nbr)
 {
 	int	len;
 
@@ -45,32 +30,30 @@ int	numlen(int nbr)
 	return (len);
 }
 
-int	ft_putnbr_base(int nbr, char *base)
+int	ft_putnbr_base(unsigned long nbr, char *base)
 {
-	int		index;
-	int		len_base;
-	int		len;
-	char	*ptr;
+	unsigned long	index;
+	unsigned long	len;
+	char			*num;
 
 	index = 0;
-	len_base = ft_strlen(base);
-	ptr = malloc(len + 1);
-	if (!ptr)
+	num = malloc(len + 1);
+	if (!num)
 		return (NULL);
-	check_base(len_base, base);
 	len = numlen(nbr);
 	if (nbr < 0)
 	{
-		ptr[index] = '-';
+		num[index] = '-';
 		index++;
 		nbr = -nbr;
 	}
-	while (nbr > 0)
+	while (nbr > 0 && index++)
 	{
-		ptr[index] = base[nbr % len_base];
-		nbr /= len_base;
-		index++;
+		num[index] = base[nbr % ft_strlen(base)];
+		nbr /= ft_strlen(base);
 	}
-	ptr[index] = '\0';
-	return (write(1, ptr, len));
+	num[index] = '\0';
+	write(1, num, len);
+	free(num);
+	return (len);
 }
