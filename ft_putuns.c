@@ -3,10 +3,10 @@
 /*                                                       :::      ::::::::    */
 /*   ft_putuns.c                                       :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
-/*   By: marsaleh <marahsaleh@student.42amman.com> #+#  +:+       +#+         */
+/*   By: marsaleh <marsaleh@student.42amman.com>   #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/10/10 08:50:43 by marsaleh         #+#    #+#              */
-/*   Updated: 2026/10/11 08:50:49 by marsaleh        ###   ########.fr        */
+/*   Updated: 2026/10/11 19:28:01 by marsaleh        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	numlen(unsigned int nbr)
 	return (len);
 }
 
-int	ft_putuns(unsigned int c)
+int	ft_putuns(unsigned int c, t_printf *head)
 {
 	int		len;
 	char	*ptr;
@@ -45,5 +45,5 @@ int	ft_putuns(unsigned int c)
 		ptr[len - 1] = (c % 10) + '0';
 		c /= 10;
 	}
-	return (wrirte(1, ptr, len));
+	lst_add_back(&head, lst_new(ptr));
 }

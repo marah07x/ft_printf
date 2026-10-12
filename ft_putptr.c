@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_putptr.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: marsaleh <marahsaleh@student.42amman.co    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/09 12:51:23 by marsaleh          #+#    #+#             */
-/*   Updated: 2026/10/11 13:05:40 by marsaleh         ###   ########.fr       */
+/*                                                       :::      ::::::::    */
+/*   ft_putptr.c                                       :+:      :+:    :+:    */
+/*                                                   +:+ +:+         +:+      */
+/*   By: marsaleh <marsaleh@student.42amman.com>   #+#  +:+       +#+         */
+/*                                               +#+#+#+#+#+   +#+            */
+/*   Created: 2026/10/11 19:10:09 by marsaleh         #+#    #+#              */
+/*   Updated: 2026/10/11 20:41:03 by marsaleh        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,23 @@ int	ft_len(unsigned char *s)
 	return (len);
 }
 
-int	ft_putptr(void *c)
+int	ft_putptr(void *p, t_printf *head)
 {
 	unsigned long	address;
+	char			*hex;
+	char			*full;
+	int				len;
 
-	write(1, "0x", 2);
+	if (!p)
+	{
+		ft_lstadd_back(&head, ft_lstnew(ft_strdup("(nil)")));
+		return (5);
+	}
+	address = (unsigned long) p;
+	hex = ft_putnbr_hex(address, head);
+	full = ft_strjoin_lst("0x", hex, head);
+	free(hex);
+	ft_lstadd_back(&head, ft_lstnew(ft_strdup(full)));
+	len = ft_strlen(full);
+	return (len);
 }
