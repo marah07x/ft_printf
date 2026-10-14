@@ -6,49 +6,52 @@
 /*   By: marsaleh <marsaleh@student.42amman.com>   #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/10/11 19:40:44 by marsaleh         #+#    #+#              */
-/*   Updated: 2026/10/11 20:31:41 by marsaleh        ###   ########.fr        */
+/*   Updated: 2026/10/13 11:03:00 by marsaleh        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	numlen(unsigned long nbr)
+static int	numlen(unsigned long long nbr)
 {
 	int	len;
 
 	len = 0;
-	if (nbr < 0)
+	if (nbr == 0)
 	{
-		nbr = -nbr;
-		len++;
+		return (1);
 	}
 	while (nbr > 0)
 	{
-		nbr /= 10;
+		nbr /= 16;
 		len++;
 	}
 	return (len);
 }
 
-int	ft_putnbr_Hex(unsigned long nbr, t_printf *head)
+int	ft_putnbr_hexx(unsigned long long nbr, char *base)
 {
-	unsigned int	index;
-	unsigned int	len;
-	char			*num;
-	char			*base;
+	int		i;
+	int		len;
+	char	*num;
 
-	base = "0123456789ABCDEF";
-	index = 0;
+	len = numlen(nbr);
 	num = malloc(len + 1);
 	if (!num)
-		return (NULL);
-	len = numlen(nbr);
-	while (nbr > 0 && index++)
+		return (-1);
+	i = len;
+	num[i] = '\0';
+	while (i > 0)
 	{
-		num[index] = base[nbr % 16];
+		i--;
+		num[i] = base[nbr % 16];
 		nbr /= 16;
 	}
-	num[index] = '\0';
-	ft_lstadd_back(&head, ft_lstnew(ft_strdup(num)));
+	if (write(1, num, len) != (int) len)
+	{
+		free(num);
+		return (-1);
+	}
+	free(num);
 	return (len);
 }

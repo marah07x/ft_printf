@@ -5,17 +5,19 @@
 /*                                                   +:+ +:+         +:+      */
 /*   By: marsaleh <marsaleh@student.42amman.com>   #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/10/11 19:09:52 by marsaleh         #+#    #+#              */
-/*   Updated: 2026/10/11 19:09:52 by marsaleh        ###   ########.fr        */
+/*   Created: 2026/10/12 13:47:46 by marsaleh         #+#    #+#              */
+/*   Updated: 2026/10/12 20:20:40 by marsaleh        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar(char c, t_printf *head)
+int	ft_putchar(int c)
 {
-	t_printf	*new;
+	char	ch;
 
-	ft_lstadd_back(&head, ft_lstnew(ft_strdup(&c)));
+	ch = (char) c;
+	if (write(1, &ch, 1) != 1)
+		return (-1);
 	return (1);
 }

@@ -6,41 +6,24 @@
 /*   By: marsaleh <marsaleh@student.42amman.com>   #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/10/11 19:10:09 by marsaleh         #+#    #+#              */
-/*   Updated: 2026/10/11 20:41:03 by marsaleh        ###   ########.fr        */
+/*   Updated: 2026/10/13 11:03:46 by marsaleh        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_len(unsigned char *s)
+int	ft_putptr(void *p)
 {
 	int	len;
 
-	while (s)
-	{
-		len++;
-		s++;
-	}
-	return (len);
-}
-
-int	ft_putptr(void *p, t_printf *head)
-{
-	unsigned long	address;
-	char			*hex;
-	char			*full;
-	int				len;
-
 	if (!p)
 	{
-		ft_lstadd_back(&head, ft_lstnew(ft_strdup("(nil)")));
-		return (5);
+		return (ft_putstr("(nil)"));
 	}
-	address = (unsigned long) p;
-	hex = ft_putnbr_hex(address, head);
-	full = ft_strjoin_lst("0x", hex, head);
-	free(hex);
-	ft_lstadd_back(&head, ft_lstnew(ft_strdup(full)));
-	len = ft_strlen(full);
-	return (len);
+	if (ft_putstr("0x") != 2)
+		return (-1);
+	len = ft_putnbr_hexx((uintptr_t) p, "0123456789abcdef");
+	if (len == -1)
+		return (-1);
+	return (len + 2);
 }

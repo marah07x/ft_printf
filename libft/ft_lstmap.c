@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: marsaleh <marahsaleh@student.42amman.co    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/30 08:50:22 by marsaleh          #+#    #+#             */
-/*   Updated: 2026/10/11 13:35:17 by marsaleh         ###   ########.fr       */
+/*                                                       :::      ::::::::    */
+/*   ft_lstmap.c                                       :+:      :+:    :+:    */
+/*                                                   +:+ +:+         +:+      */
+/*   By: marsaleh <marsaleh@student.42amman.com>   #+#  +:+       +#+         */
+/*                                               +#+#+#+#+#+   +#+            */
+/*   Created: 2026/09/30 08:50:22 by marsaleh         #+#    #+#              */
+/*   Updated: 2026/10/12 10:56:46 by marsaleh        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+/*
 void	*f(void *content)
 {
-	char	*str;
-	int		i;
+char	*str;
+int		i;
 
-	i = 0;
-	str = (char *) content;
-	while (str[i])
-	{
-		if (str[i] >= 'a' && str[i] <= 'z')
-		{
-			str[i] -= 32;
-		}
-		i++;
-	}
-	return (content);
+i = 0;
+str = (char *) content;
+while (str[i])
+{
+if (str[i] >= 'a' && str[i] <= 'z')
+{
+str[i] -= 32;
+}
+i++;
+}
+return (content);
 }
 
 void	del(void *content)
 {
-	free(content);
+free(content);
 }
+*/
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {

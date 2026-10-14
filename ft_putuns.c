@@ -6,22 +6,19 @@
 /*   By: marsaleh <marsaleh@student.42amman.com>   #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/10/10 08:50:43 by marsaleh         #+#    #+#              */
-/*   Updated: 2026/10/11 19:28:01 by marsaleh        ###   ########.fr        */
+/*   Updated: 2026/10/12 20:29:55 by marsaleh        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	numlen(unsigned int nbr)
+static int	numlen(unsigned int nbr)
 {
 	int	len;
 
 	len = 0;
-	if (nbr < 0)
-	{
-		nbr = -nbr;
-		len++;
-	}
+	if (nbr == 0)
+		return (1);
 	while (nbr > 0)
 	{
 		nbr /= 10;
@@ -30,20 +27,30 @@ int	numlen(unsigned int nbr)
 	return (len);
 }
 
-int	ft_putuns(unsigned int c, t_printf *head)
+int	ft_putuns(unsigned int c)
 {
 	int		len;
-	char	*ptr;
+	int		i;
+	char	*unnum;
 
 	len = numlen(c);
-	ptr = malloc(len + 1);
-	if (!ptr)
-		return (NULL);
-	ptr[len] = '\0';
-	while (c <= 9)
+	i = 0;
+	unnum = malloc(len + 1);
+	if (!unnum)
+		return (-1);
+	i = len;
+	unnum[len] = '\0';
+	while (i > 0)
 	{
-		ptr[len - 1] = (c % 10) + '0';
+		unnum[i - 1] = (c % 10) + '0';
 		c /= 10;
+		i--;
 	}
-	lst_add_back(&head, lst_new(ptr));
+	if (write(1, unnum, len) != len)
+	{
+		free(unnum);
+		return (-1);
+	}
+	free(unnum);
+	return (len);
 }
