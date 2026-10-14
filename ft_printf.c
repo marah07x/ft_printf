@@ -3,10 +3,10 @@
 /*                                                       :::      ::::::::    */
 /*   ft_printf.c                                       :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
-/*   By: marsaleh <marsaleh@student.42amman.com>   #+#  +:+       +#+         */
+/*   By: marsaleh <marahsaleh@student.42amman.com> #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/10/11 19:09:34 by marsaleh         #+#    #+#              */
-/*   Updated: 2026/10/13 11:10:23 by marsaleh        ###   ########.fr        */
+/*   Updated: 2026/10/14 10:04:24 by marsaleh        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
